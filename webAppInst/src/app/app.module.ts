@@ -7,6 +7,7 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { UserService } from './shared/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserService } from './shared/user.service';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

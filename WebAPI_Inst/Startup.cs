@@ -37,7 +37,7 @@ namespace WebAPI_Inst
                 options.Password.RequiredLength = 4;
                 options.Password.RequireUppercase = false;
             });
-
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +47,9 @@ namespace WebAPI_Inst
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(builder => builder.WithOrigins("http://localhost:50757")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
 
             app.UseRouting();
 

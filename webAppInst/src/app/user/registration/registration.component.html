@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <form [formGroup]="service.formModel" autocomplete="off">
+        <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
             <div class="form-group required">
                 <label>UserName</label>
                 <input class="form-control" formControlName="UserName">
@@ -22,19 +22,20 @@
            <div formGroupName="Passwords">
             <div class="form-group required">
                 <label>Password</label>
-                <input class="form-control" formControlName="Password">
+                <input class="form-control" formControlName="Password" type="password">
                 <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">This field is mandatory</label>
-                <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minLength">Minimum 4 characters required</label>
+                <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minlength">Minimum 4 characters required</label>
             </div>
             <div class="form-group required">
                 <label>ConfirmPassword</label>
-                <input class="form-control" formControlName="ConfirmPassword">
+                <input class="form-control" formControlName="ConfirmPassword"  type="password">
                 <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">This field is mandatory</label>
+                <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passswordMismatch">Confirm Password is not match</label>
             </div>
            </div>
            <div class="form-row">
                <div class="form-group col-md-8 offset-md-2">
-                   <button type="submit" class="btn btn-lg btn-block"></button>
+                   <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Sign Up</button>
                </div>
            </div>
         </form>
