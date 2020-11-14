@@ -26,8 +26,7 @@ export class RegistrationComponent implements OnInit {
               this.toastr.error('User is already taken','Registration failed')
                default:
                 this.toastr.error(element.description,'Registration failed')
-                 break;
-           }
+                 break; }
          });
       },
       err=>{
