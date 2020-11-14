@@ -47,7 +47,7 @@ namespace WebAPI_Inst
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(builder => builder.WithOrigins("http://localhost:50757")
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200")
             .AllowAnyHeader()
             .AllowAnyMethod());
 

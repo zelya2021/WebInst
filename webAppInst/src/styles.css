@@ -4,3 +4,6 @@ div.form-group.required>label:first-child:after{
     color: red;
     padding-left: 5px;
 }
+#toast-container>div{
+    opacity: 1;
+}
