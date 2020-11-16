@@ -35,4 +35,8 @@ export class UserService {
     };
     return this.http.post(this.BaseURI + '/Application/Register', body)
   }
+
+  login(formData){
+    return this.http.post(this.BaseURI + '/Application/Login', formData)
+  }
 }
