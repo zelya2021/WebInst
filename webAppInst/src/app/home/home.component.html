@@ -1,5 +1,6 @@
 <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand text-white" style="font-family: Bradley Hand, cursive;">Muraveinik</a>
-    <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
-  </nav>
-  
+  <a class="navbar-brand text-white" style="font-family: Bradley Hand, cursive;" (click)="this.mainPage()" style="cursor: pointer;">Muraveinik</a>
+  <img src="assets/img/user.png" class="user_icon" (click)="this.onProfile()">
+  <img src="assets/img/sms.png" class="message_icon" (click)="this.onChat()">
+  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+</nav>

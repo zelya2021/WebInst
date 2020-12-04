@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
+using WebAPI_Inst.Hubs;
 using WebAPI_Inst.Models;
 
 namespace WebAPI_Inst
@@ -23,13 +24,13 @@ namespace WebAPI_Inst
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             services.AddControllers();
 
-            services.AddDbContext<AuthenticationContex>(options=>
+            services.AddDbContext<AuthenticationContex>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddDefaultIdentity<User>()
@@ -52,7 +53,7 @@ namespace WebAPI_Inst
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x=> {
+            }).AddJwtBearer(x => {
                 x.RequireHttpsMetadata = false;
                 x.SaveToken = false;
                 x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
@@ -64,6 +65,17 @@ namespace WebAPI_Inst
                     ClockSkew = TimeSpan.Zero
                 };
             });
+
+            //for SignalR
+            services.AddSignalR();            // Add this service too
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+            builder =>
+            {
+                builder.AllowAnyMethod().AllowAnyHeader()
+                       .WithOrigins("http://localhost:4200")
+                       .AllowCredentials();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,9 +94,11 @@ namespace WebAPI_Inst
             app.UseAuthorization();
             app.UseAuthentication();
 
+            app.UseCors("CorsPolicy");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chatsocket");     // path will look like this https://localhost:44379/chatsocket 
             });
         }
     }

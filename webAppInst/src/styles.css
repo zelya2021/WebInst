@@ -95,3 +95,13 @@ div.form-group.required>label:first-child:after{
     text-transform: uppercase;
     font-size: 0.9rem;
  }
+  /*home.component*/
+  .user_icon{
+    height: 40px; 
+    margin-left: 75%;
+    cursor: pointer;
+   }
+   .message_icon{
+    height: 40px;
+    cursor: pointer;
+   }
