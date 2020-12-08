@@ -4,7 +4,7 @@ import { MessageDto } from 'src/app/home/chat/Dto/MessageDto';
 @Component({
   selector: 'chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
 

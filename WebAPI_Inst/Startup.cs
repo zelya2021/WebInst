@@ -85,9 +85,9 @@ namespace WebAPI_Inst
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(builder => builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
-            .AllowAnyHeader()
-            .AllowAnyMethod());
+            //app.UseCors(builder => builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
+            //.AllowAnyHeader()
+            //.AllowAnyMethod());
 
             app.UseRouting();
 

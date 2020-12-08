@@ -8,3 +8,5 @@
 [1116/111331.285:ERROR:crash_report_database_win.cc(457)] unexpected header
 [1116/111943.921:ERROR:crash_report_database_win.cc(457)] unexpected header
 [1204/132415.908:ERROR:crash_report_database_win.cc(455)] unexpected header
+[1204/161828.598:ERROR:directory_reader_win.cc(43)] FindFirstFile: Системе не удается найти указанный путь. (0x3)
+[1208/182220.400:ERROR:crash_report_database_win.cc(455)] unexpected header
